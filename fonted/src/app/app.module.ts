@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { propertCardComponent } from './property/propert-card/property-card.component';
@@ -8,7 +8,7 @@ import { PropertListComponent } from './property/propert-list/propert-list.compo
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     propertCardComponent,
     PropertListComponent,
@@ -17,7 +17,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   imports: [
 
   BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+      MDBBootstrapModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]

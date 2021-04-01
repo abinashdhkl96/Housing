@@ -1,4 +1,8 @@
-h1{
-  font-weight:normal;
-  color: green;
+.propImg{
+  height:250px;
+  overflow: hidden;
+}
+.card{
+  float: left;
+  margin: 2em;
 }
