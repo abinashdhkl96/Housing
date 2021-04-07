@@ -1,0 +1,70 @@
+[
+  {
+  "Id":1,
+  "SellRent":2,
+  "Name":"Sachin Gaire",
+  "Type":"House",
+  "Price":"20,000,00",
+  "Image":"house1"
+},
+{
+  "Id":2,
+  "SellRent":1,
+  "Name":"Komal Dhakal",
+  "Type":"House",
+  "Price":"30,000,00",
+  "Image":"house2"
+},
+{
+  "Id":3,
+  "SellRent":2,
+  "Name":"Sishr Bhattarai",
+  "Type":"House",
+  "Price":"10,000,00",
+  "Image":"house3"
+},
+{
+  "Id":4,
+  "SellRent":1,
+  "Name":"Abinash Dhakal",
+  "Type":"House",
+  "Price":"80,000,00",
+  "Image":"house4"
+},
+{
+  "Id":5,
+  "SellRent":2,
+  "Name":"Anisha Gautam",
+  "Type":"House",
+  "Price":"40,000,00",
+  "Image":"house5"
+},
+{
+  "Id":6,
+  "SellRent":1,
+  "Name":"Dikshya Dhakal",
+  "Type":"House",
+  "Price":"70,000,00",
+  "Image":"house6"
+},
+{
+  "Id":7,
+  "SellRent":2,
+  "Name":"Anjit Basnet",
+  "Type":"House",
+  "Price":"70,000,00",
+  "Image":"house7"
+
+},
+{
+  "Id":8,
+  "SellRent":1,
+  "Name":"Balkrishna Poudel",
+  "Type":"House",
+  "Price":"70,000,00"
+
+
+}
+
+
+]

@@ -1,0 +1,9 @@
+/* .ng-vaild{
+   border-color:red;
+} */
+.ng-invalid.ng-touched{
+    border-color: red;
+}
+.err-block{
+  color: red;
+}

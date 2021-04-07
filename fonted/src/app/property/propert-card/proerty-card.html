@@ -1,11 +1,29 @@
+
 <div class="row">
   <div class="shadow-lg col-sm-4 p-3">
     <div  class="card" >
-      <img class="propImg"  src="assets/images/house_default.png">
+      <div class="card-img-wrapper">
+        <img *ngIf="property.Image" class="card-img-top"  src="assets/images/house/{{property.Image}}.jpg">
+        <img *ngIf="!property.Image" class="default-Image"  src="assets/images/house/house_default.png">
+        <ul class="button">
+          <div class="btn-animate">
+            <li> <button class="btn col-1p2" type="button" mdbBtn color="primary" mdbWavesEffect routerLink="/property-details/{{property.Id}}">
+              <i class="fas fa-edit" >
+
+              </i>
+            </button> </li>
+          <li><button class="btn col-1 p2" type="button" mdbBtn color="secondary" mdbWavesEffect><mdb-icon fas icon="address-book"></mdb-icon></button></li>
+
+          </div>
+
+        </ul>
+      </div>
+
         <div class="card-body p2">
-          <h1>{{property.Name}}</h1>
-          <h2>{{property.Type}}</h2>
-          <h3>{{property.Price}}</h3>
+          <h1 class="name">{{property.Name}}</h1>
+          <h2 class="type">{{property.Type}}</h2>
+          <h3 class="price">Rs {{property.Price}}</h3>
+
 
         </div>
 

@@ -1,8 +1,70 @@
-.propImg{
+.card-img-top{
   height:250px;
+  width: 250px;
   overflow: hidden;
+}
+.default-Image{
+  height:250px;
+  width: 250px;
+  overflow: hidden;
+
+}
+.card-img-wrapper{
+  overflow: hidden;
+  position: relative;
+
 }
 .card{
   float: left;
   margin: 2em;
+
+}
+
+.card:hover img{
+  transform:scale(1.2,1.2) !important;
+  transition-duration: 500ms !important;
+  transition-timing-function: ease-out !important;
+  opacity: 0.5;
+
+}
+.name{
+  color: gray;
+  font-size: large;
+  font-weight: bolder;
+  font-family: cursive;
+  text-align: left;
+}
+.type{
+  font-size: x-large;
+  font-family: fantasy;
+  font-weight: bolder;
+}
+.price{
+  font-family: cursive;
+}
+.button{
+  position: absolute;
+  text-align: center;
+  right: 0;
+  bottom: -50%;
+  left: 0;
+  margin-right: 2em;
+  list-style-type: none;
+
+}
+li{
+width: 5px;
+  text-decoration: none;
+  display: inline;
+}
+.card-img-wrapper:hover .button{
+  bottom: 0;
+}
+.btn-animate{
+  transition: all 500ms ease-out !important;
+  -webkit-transition: all 500ms ease-out !important;
+  -moz-transition: all 500ms ease-out !important;
+  -ms-transition: all 500ms ease-out !important;
+  -o-transition: all 500ms ease-out !important;
+  opacity: 0.5;
 }

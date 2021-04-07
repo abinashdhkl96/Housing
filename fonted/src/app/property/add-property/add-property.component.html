@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-header">
+    Add New Property
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)='onSubmit(Form)' #Form="ngForm" >
+      <div class="form-group">
+        <label for="name">Property Name</label>
+        <input type="text" #propName="ngModel" class="form-control" ngModel name="name" required  minlength="5" >
+        <span *ngIf="!propName.valid && propName.untouched" class="err-block" >
+        <span *ngIf="propName.errors?.required">please provide name</span>
+        <span *ngIf="propName.errors?.minlength">name must be minimum 5 character</span>
+        </span>
+
+      </div>
+      <div class="form-group">
+        <label for="type">Property Type</label>
+        <input type="text" class="form-control" ngModel name="type" >
+
+      </div>
+      <div class="form-group">
+        <label for="price"> Property Price</label>
+        <input type="text" class="form-control" ngModel name="price" >
+
+      </div>
+      <!-- <div class="form-group" ngModel name="sellrent">
+        <label for="sellrent">Sell Rent </label>
+        <select class="form-control" >
+          <option>choose</option>
+          <option>1</option>
+          <option>2</option>
+        </select>
+
+      </div>
+       -->
+      <div class="form-group col-12">
+        <button  type="submit"  class="btn btn-primary">save</button>
+        <button type="reset" class="btn btn-danger">reset</button>
+
+      </div>
+    </form>
+
+  </div>
+
+</div>
+  <div class="backBtn">
+    <button (click)="onBack()" type="button" mdbBtn color="secondary" mdbWavesEffect>Back</button>
+
+  </div>
+

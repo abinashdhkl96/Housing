@@ -28,7 +28,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/data"
             ],
             "styles": [
 
@@ -38,7 +39,8 @@
     "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
     "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
     "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
-    "node_modules/animate.css/animate.css"
+    "node_modules/animate.css/animate.css",
+    "~bootstrap/dist/css/bootstrap.css"
 
             ],
 
