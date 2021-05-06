@@ -5,7 +5,7 @@
       <div class="card-img-wrapper">
         <img *ngIf="property.Image" class="card-img-top"  src="assets/images/house/{{property.Image}}.jpg">
         <img *ngIf="!property.Image" class="default-Image"  src="assets/images/house/house_default.png">
-        <ul class="button">
+        <ul *ngIf="!hideIcons" class="button">
           <div class="btn-animate">
             <li> <button class="btn col-1p2" type="button" mdbBtn color="primary" mdbWavesEffect routerLink="/property-details/{{property.Id}}">
               <i class="fas fa-edit" >
@@ -19,14 +19,21 @@
         </ul>
       </div>
 
-        <div class="card-body p2">
-          <h1 class="name">{{property.Name}}</h1>
-          <h2 class="type">{{property.Type}}</h2>
-          <h3 class="price">Rs {{property.Price}}</h3>
+      <div class="card-body p-1">
+        <h2 class="mb-0"> {{property.BHK}} BHK {{property.PType}} </h2>
 
+        in {{property.Name}}
+        <span *ngIf="property.Name">,</span>
+        {{property.city}}
 
-        </div>
+        <h6  class="mt-2">{{property.PType}}
+        <span *ngIf="property.fType !== 'unfurnished'">{{property.fType}} Furnished</span> | Ready to Move</h6>
+          <!-- <h6>{{property.fType}}</h6> -->
+        <hr class="mt-0 mb-2">
 
+        <h6 class="mb-0">Price: <span class>{{property.Price}} USD.</span> |
+          Area:  <span>{{property.BulitArea}} Sq Ft </span> </h6>
+      </div>
 
 
     </div>

@@ -1,9 +1,23 @@
 /* .ng-vaild{
    border-color:red;
 } */
-.ng-invalid.ng-touched{
-    border-color: red;
+
+.photo-control{
+  min-height: 300px;
+  vertical-align: middle;
+  text-align: center;
+  border: 1px dashed blue;
+  margin: 5px;
 }
-.err-block{
-  color: red;
+.card-header{
+  width: auto;
 }
+/* .btn-group > label[ng-reflect-btn-radio]{
+  border-radius: 44px;
+  -webkit-border-radius: 44px;
+  -moz-border-radius: 44px;
+  -ms-border-radius: 44px;
+  -o-border-radius: 44px;
+  padding: 0 15px;
+  line-height: 30px !important;
+} */

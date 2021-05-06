@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/alertify.js/dist/css/alertify.css';
+@import '../node_modules/alertify.js/src//css/alertify.css';
+@import '../node_modules/alertify.js/src/sass/alertify.scss';
+@import './assets/form.css';
+@import './assets/tab.css'

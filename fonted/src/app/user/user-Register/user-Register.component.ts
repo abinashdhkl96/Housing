@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import {PasswordValidators} from 'ngx-validators'
 import {userValidator} from './userValdator'
+import { UserServiceService } from './../../services/user-service.service';
+import { User } from 'src/app/model/user';
+import {AlertifyService} from './../../services/alertify/alertify.service'
 
 
 @Component({
@@ -10,40 +14,50 @@ import {userValidator} from './userValdator'
 })
 export class UserRegisterComponent implements OnInit {
   registerationForm!: FormGroup;
-  user = {
-    username: '',
-    email: '',
-    password: ''
-  };
-  submitted = false;
+  user!: User;
+  submitted: boolean = false;
   // @Input() password='';
   //  @Input() passwordConform='';
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService : UserServiceService,private alertify:AlertifyService) { }
 
   ngOnInit() {
     this.registerationForm= this.fb.group({
-      userName: ['',Validators.required],
-      email: [,[Validators.required,Validators.email]],
-      password:[,[ Validators.required ,Validators.minLength(6)]],
-      conformPassword: [,[Validators.required]],
-      mobileNumber: [,[Validators.required,Validators.maxLength(10)]]
+      userName: [null,Validators.required],
+      email: [null,[Validators.required,Validators.email]],
+      password:[null,[ Validators.required ,Validators.minLength(6)]],
+      conformPassword: [null,[Validators.required]],
+      mobileNumber: [null,[Validators.required,Validators.maxLength(10)]]
     },
-    this.passwordMatchingValidator
+    // { Validators :this.passwordMatchingValidator}
     // {Validator.passwoe}
+    // PasswordValidators.mismatchedPasswords('password','conformPassword')
 
     );
   }
-    passwordMatchingValidator( FormGroup:FormGroup) {
-        return FormGroup.get('password')?.value === FormGroup.get('conformPassword')?.value
-        ? null
+    passwordMatchingValidator( FormGroup:FormGroup):Validators {
+      const password = FormGroup.get('password')?.value
+      const confirmPassword = FormGroup.get('conformPassword')?.value
+        return  password === confirmPassword
+        ? {'':null}
         :
          {notMatch:true}
 
 
 
       }
+      userData():User{
+        return this.user={
+          userName: this.userName.value,
+          email : this.email.value,
+          password:this.password.value,
+          conformPassword:this.conformPassword.value,
+          mobileNumber:this.mobileNumber.value
+        }
+
+      }
+
       get userName(){
         return this.registerationForm.get('userName') as FormControl
 
@@ -69,14 +83,26 @@ export class UserRegisterComponent implements OnInit {
 
 
   onSubmit(){
-    console.log('registration Form',this.registerationForm)
+    console.log('registration Form',this.registerationForm.value);
+    this.submitted=true
+    if(this.registerationForm.valid){
+      // this.user = Object.assign(this.user,this.registerationForm.value);
+
+      this.userService.addUser(this.userData());
+      this.registerationForm.reset();
+      this.submitted=false
+     this.alertify.success('Succussfully Register');
+    }else{
+     this.alertify.error('Something is Wrong');
+
+    }
 
 
   }
 
 
+
+
 }
-function control(control: any, arg1: { userName: (string | ((control: import("@angular/forms").AbstractControl) => ValidationErrors | null))[]; email: (((control: import("@angular/forms").AbstractControl) => ValidationErrors | null)[] | undefined)[]; password: (((control: import("@angular/forms").AbstractControl) => ValidationErrors | null)[] | undefined)[]; conformPassword: (((control: import("@angular/forms").AbstractControl) => ValidationErrors | null)[] | undefined)[]; mobileNumber: (((control: import("@angular/forms").AbstractControl) => ValidationErrors | null)[] | undefined)[]; }, passwordMatchingValidator: (FormGroup: FormGroup) => { notMatch: boolean; } | null): FormGroup {
-  throw new Error('Function not implemented.');
-}
+
 

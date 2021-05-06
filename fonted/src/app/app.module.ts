@@ -1,6 +1,8 @@
 import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { UserServiceService } from './services/user-service.service';
+import { HousingService } from './services/housing.service';
 // MDB Angular Free
 import {HttpClientModule} from '@angular/common/http';
 import { IconsModule } from 'angular-bootstrap-md'
@@ -9,13 +11,20 @@ import { AppComponent } from './app.component';
 import { propertCardComponent } from './property/propert-card/property-card.component';
 import { PropertListComponent } from './property/propert-list/propert-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HousingService } from './services/housing.service';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailsComponent } from './property/property-details/property-details.component';
 import { UserLoginComponent } from './user/user-Login/user-Login.component';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { UserRegisterComponent } from './user/user-Register/user-Register.component';
+import {ValidatorsModule} from 'ngx-validators'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {  RouterModule, Routes } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { AlertifyService } from './services/alertify/alertify.service';
+import { AuthService } from './services/auth/auth.service';
+
 
 const appRoutes : Routes=
 [
@@ -37,7 +46,8 @@ const appRoutes : Routes=
       AddPropertyComponent,
       PropertyDetailsComponent,
       UserLoginComponent,
-      UserRegisterComponent
+      UserRegisterComponent,
+
    ],
   imports: [
 
@@ -53,11 +63,20 @@ const appRoutes : Routes=
       IconsModule,
       FormsModule,
       ReactiveFormsModule,
-      RouterModule.forRoot(appRoutes)
+      ValidatorsModule,
+      RouterModule.forRoot(appRoutes),
+      TabsModule.forRoot(),
+      ButtonsModule.forRoot(),
+      BrowserAnimationsModule,
+      BsDatepickerModule.forRoot(),
 
   ],
   providers: [
-    HousingService,
+        HousingService,
+    UserServiceService,
+       AlertifyService,
+           AuthService,
+
   ],
   bootstrap: [AppComponent]
 })

@@ -28,12 +28,32 @@
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/user/register" >Register</a>
+        <li *ngIf="loggedIn()"class="nav-item">
+          <a class="nav-link"  >
+
+            <div class="btn-group mx-4" mdbDropdown>
+              Welcome {{loggedInUser}} &nbsp;
+
+              <mdb-icon fas icon="user" classInside="dropdown-toggle " mdbDropdownToggle class="waves-effect"
+                        mdbWavesEffect></mdb-icon>
+              <div class="dropdown-menu dropdown-primary">
+                <a class="dropdown-item" routerLink="/"><mdb-icon fas icon="tachometer-alt"></mdb-icon>view Dashboard</a>
+                <a class="dropdown-item" href="#"><mdb-icon fas icon="user-circle"></mdb-icon>profile</a>
+                <a class="dropdown-item" href="#"><mdb-icon fas icon="key"></mdb-icon>password Change</a>
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item" (click)="loggedout()" ><mdb-icon fas icon="sign-out-alt"></mdb-icon>Logout</a>
+              </div>
+            </div>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/user/login" >Login</a>
+        <li *ngIf="!loggedIn()" class="nav-item">
+          <a class="nav-link"  routerLinkActive="active" routerLink="/user/register" >Register</a>
         </li>
+        <li *ngIf="!loggedIn()" class="nav-item">
+          <a class="nav-link"  routerLinkActive="active" routerLink="/user/login" >Login</a>
+        </li>
+
+
       </ul>
     </div>
   </div>
