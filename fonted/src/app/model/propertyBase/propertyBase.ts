@@ -9,6 +9,7 @@ export  interface IpropertyBase{
   BHK:number | string;
   BulitArea:number | string;
   city:string;
+  address:String;
   RTM:string;
   Image ?: string
 

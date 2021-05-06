@@ -5,6 +5,7 @@ import {userValidator} from './userValdator'
 import { UserServiceService } from './../../services/user-service.service';
 import { User } from 'src/app/model/user';
 import {AlertifyService} from './../../services/alertify/alertify.service'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,11 +17,12 @@ export class UserRegisterComponent implements OnInit {
   registerationForm!: FormGroup;
   user!: User;
   submitted: boolean = false;
+  Router: any;
   // @Input() password='';
   //  @Input() passwordConform='';
 
 
-  constructor(private fb: FormBuilder, private userService : UserServiceService,private alertify:AlertifyService) { }
+  constructor(private fb: FormBuilder, private userService : UserServiceService,private alertify:AlertifyService, private router:Router) { }
 
   ngOnInit() {
     this.registerationForm= this.fb.group({
@@ -92,6 +94,7 @@ export class UserRegisterComponent implements OnInit {
       this.registerationForm.reset();
       this.submitted=false
      this.alertify.success('Succussfully Register');
+     this.router.navigate(['/user/login']);
     }else{
      this.alertify.error('Something is Wrong');
 

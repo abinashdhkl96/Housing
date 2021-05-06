@@ -6,6 +6,16 @@
   width: 250px;
   overflow: hidden;
 }
+.card-body>h2{
+
+  font-family: fantasy;
+  color: blue;
+}
+.font-highylight{
+  font-family: cursive ;
+  font:italic bold;
+color: red;
+}
 .default-Image{
   height:250px;
   width: 250px;
