@@ -36,6 +36,9 @@ export class PropertListComponent implements OnInit {
     .subscribe(
       data=>{
         this.properties = data;
+
+
+
         console.log('fetch properties',data);
       },error=>{
         console.log(error);

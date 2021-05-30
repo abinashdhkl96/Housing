@@ -101,35 +101,39 @@
           </tab>
           <tab heading="pricing and Area" formGroupName="PriceAndArea">
             <div class="form-group col-12">
-            <label>Price (in USD)</label>
+            <label *ngIf="SellRent.value==1">Price (in USD)</label>
+            <label  *ngIf="SellRent.value==2">Rent (in USD)</label>
             <input type="text" class="form-control"  name="Price" [(ngModel)]="propertyView.Price" formControlName="Price" >
             <div class="err-block" *ngIf="Price.invalid && (NextClicked || Price.touched)">
               <p> please enter price in USD </p>
             </div>
 
           </div>
+          <div *ngIf="SellRent.value==2">
+            <div class="form-group col-12">
+              <label>Security (in USD)</label>
+              <input type="text" class="form-control" name="security" formControlName="security">
+            </div>
 
-          <div class="form-group col-12">
-            <label>Security (in USD)</label>
-            <input type="text" class="form-control">
+            <div class="form-group col-12">
+              <label>Maintenance (in USD)</label>
+              <input type="text" class="form-control" formControlName="maintance">
+            </div>
           </div>
 
-          <div class="form-group col-12">
-            <label>Maintenance (in USD)</label>
-            <input type="text" class="form-control">
-          </div>
+
 
           <div class="form-group col-12">
             <label>Built Area (in Sqr Feet)</label>
-            <input type="text" class="form-control" name="BuildArea" [(ngModel)]="propertyView.BulitArea" formControlName="BuildArea">
+            <input type="text" class="form-control" name="BuildArea" [(ngModel)]="propertyView.BuildArea" formControlName="BuildArea">
             <div class="err-block" *ngIf="BuildArea.invalid && (NextClicked || BuildArea.touched)">
               <p> please enter price in USD </p>
             </div>
           </div>
 
-          <div class="form-group col-12">
+          <div class="form-group col-12" *ngIf="SellRent.value==2">
             <label>Carpet Area(in Sqr Feet)</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="carpetArea">
           </div>
           <div class="form-group col-12">
             <button  type="button"   class="btn btn-primary btn-block" (click)="selectTab(2,PriceAndArea.valid)" > Next </button>
@@ -141,35 +145,35 @@
           <tab heading="Address" formGroupName="Address">
             <div class="form-group col-12">
               <label>Floor</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="floor" >
             </div>
 
             <div class="form-group col-12">
               <label>Total Floor</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="totalFloor">
             </div>
 
             <div class="form-group col-12">
               <label>Address</label>
               <input type="text" class="form-control" formControlName="address" [(ngModel)]="propertyView.address" >
-              <div class="err-block" *ngIf="Address.invalid && (NextClicked || Address.touched)">
+              <div class="err-block" *ngIf="address.invalid && (NextClicked || address.touched)">
                 <p> please enter your Address </p>
               </div>
             </div>
 
             <div class="form-group col-12">
               <label>Landmark</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="landMark">
             </div>
             <div class="form-group col-12">
-            <button  type="button"   class="btn btn-primary btn-block" (click)="selectTab(3,Address.valid)" > Next </button>
+            <button  type="button"   class="btn btn-primary btn-block" (click)="selectTab(3,addressInfo.valid )" > Next </button>
               </div>
               <div class="form-group col-12">
-            <button  type="button"  class="btn btn-primary btn-block" (click)="selectTab(1,Address.valid)" > Back </button>
+            <button  type="button"  class="btn btn-primary btn-block" (click)="selectTab(1,addressInfo.valid)" > Back </button>
                 </div>
           </tab>
           <tab heading="Other Details" formGroupName="otherDetails">
-            <div class="form-group col-12">
+            <div class="form-group col-12"  >
               <label>Ready to Move</label><br/>
               <input type="radio" id='Yes' value='1' formControlName="RTM">
               <label class="m-2">Yes</label>
@@ -179,36 +183,36 @@
             </div>
 
 
-            <div class="col-xs-12 col-12 col-md-4 form-group">
-              <label> Date</label>
+            <div class="col-xs-12 col-12 col-md-4 form-group" *ngIf="RTM.value=='2'" >
+              <label> Possession/Avaialble From</label>
               <input type="text"
                      placeholder="DD/MM/YY"
                      class="form-control"
-                     bsDatepicker [bsConfig]="{containerClass:'theme-dark-blue',dateInputFormat: 'DD/MM/YYYY'}">
+                     bsDatepicker [bsConfig]="{containerClass:'theme-dark-blue',dateInputFormat: 'DD/MM/YYYY'}" formControlName="date">
 
             </div>
-            <div class="form-group col-12">
+            <div class="form-group col-12" *ngIf="RTM.value=='1'">
               <label>Age of Property</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="age">
             </div>
 
             <div class="form-group col-12">
               <label>Gated Community</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="community">
             </div>
 
             <div class="form-group col-12">
               <label>Main Entrance</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" formControlName="entrance">
             </div>
 
             <div class="form-group col-12">
               <label>Description</label>
-              <textarea type="text" class="form-control" rows="6"></textarea>
+              <textarea type="text" class="form-control" rows="6" formControlName="description"></textarea>
             </div>
 
             <div class="form-group col-12">
-            <button  type="button" [disabled]="otherDetails.invalid"  class="btn btn-primary btn-block" (click)="selectTab(4,otherDetails.valid)" > Next </button>
+            <button  type="button"  class="btn btn-primary btn-block" (click)="selectTab(4,otherDetails.valid)" > Next </button>
             </div>
             <div class="form-group col-12">
             <button  type="button"  class="btn btn-primary btn-block" (click)="selectTab(2,otherDetails.valid)" > Back </button>
@@ -217,8 +221,14 @@
           <tab heading="upload photos" formGroupName="Uploads">
             <div class="form-group col-12">
               <div class="photo-control">
-                  <button class="mt-5" type="button">Upload</button> <br>
+                <input type="file" class="mt-5" formControlName="Image"><br/>
+                  <!-- <button class="mt-5" type="button" name="Image">Upload</button> <br> -->
+                  <div>
+                 <p>
                   This is under construction
+                 </p>
+                  </div>
+
               </div>
             </div>
             <div class="form-group col-12">

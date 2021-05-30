@@ -24,14 +24,17 @@ import {  RouterModule, Routes } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AlertifyService } from './services/alertify/alertify.service';
 import { AuthService } from './services/auth/auth.service';
+import { Product_detailsResolverService } from './property/property-details/resolver/product_details-resolver.service';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 
 const appRoutes : Routes=
 [
   {path:'', component:PropertListComponent},
   {path:'add-property', component:AddPropertyComponent},
+  {path:'property-details/:id', component:PropertyDetailsComponent, resolve:{prp : Product_detailsResolverService}},
   // {path:'rent-property', component:PropertyDetailsComponent},
-  {path:'property-details/:id', component:PropertyDetailsComponent},
+
   {path:'user/login', component:UserLoginComponent},
   {path:'user/register', component:UserRegisterComponent},
   {path:'**', component:PropertListComponent}
@@ -47,6 +50,7 @@ const appRoutes : Routes=
       PropertyDetailsComponent,
       UserLoginComponent,
       UserRegisterComponent,
+
 
    ],
   imports: [
@@ -69,6 +73,7 @@ const appRoutes : Routes=
       ButtonsModule.forRoot(),
       BrowserAnimationsModule,
       BsDatepickerModule.forRoot(),
+      NgxGalleryModule
 
   ],
   providers: [
@@ -76,6 +81,8 @@ const appRoutes : Routes=
     UserServiceService,
        AlertifyService,
            AuthService,
+           Product_detailsResolverService
+
 
   ],
   bootstrap: [AppComponent]
