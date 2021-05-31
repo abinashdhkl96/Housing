@@ -26,6 +26,8 @@ import { AlertifyService } from './services/alertify/alertify.service';
 import { AuthService } from './services/auth/auth.service';
 import { Product_detailsResolverService } from './property/property-details/resolver/product_details-resolver.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SortPipe } from './pipe/sort.pipe';
 
 
 const appRoutes : Routes=
@@ -50,6 +52,8 @@ const appRoutes : Routes=
       PropertyDetailsComponent,
       UserLoginComponent,
       UserRegisterComponent,
+      FilterPipe,
+      SortPipe,
 
 
    ],

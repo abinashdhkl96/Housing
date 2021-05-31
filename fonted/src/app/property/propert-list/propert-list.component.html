@@ -1,5 +1,20 @@
+<!-- current date ={{Today | date:'fullTime'}} -->
+<label>Filter: &nbsp;</label>
+<input [(ngModel)]='city' >
+<button type='button' (click)=" onCityFilter()" >search</button>
+<button type='button' (click)=" onCityFilterClear()" >clear</button>&nbsp;
+<label>sort: &nbsp;</label>
+<select [(ngModel)]='sortByParams'>
+<option value="city" >City</option>
+<option value='Price'>Price</option>
+</select>
+<button type='button' (click)=" onSort()" >
+  <i *ngIf="sortDirection ==='desc'">ASC</i>
+  <i *ngIf="sortDirection ==='asc'">DESC</i>
+</button>
+
 <div class="row">
-  <div *ngFor="let property of properties" class="shadow-lg col-4 p3">
+  <div *ngFor="let property of properties | filter :cityFilter:'city'|sort:[sortByParams,onSort()] " class="shadow-lg col-4 p3">
 <app-propert-Card [property]="property" ></app-propert-Card>
 </div>
 </div>
