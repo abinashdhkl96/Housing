@@ -21,6 +21,11 @@ export class HousingService {
   //     ));
   //   };
 
+  getAllCities():Observable<string[]>
+  {
+    return this.http.get<string[]>('http://localhost:5000/api/City');
+  }
+
   getProperty(Id:number) {
     return this.getAllProperties().pipe(
       map(propertyArray=>{

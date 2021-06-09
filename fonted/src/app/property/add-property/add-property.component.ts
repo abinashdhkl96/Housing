@@ -24,11 +24,14 @@ export class AddPropertyComponent implements OnInit {
   formTabs!: TabsetComponent;
   addPropertyForm ! : FormGroup;
   NextClicked !:boolean
+   cityList!: any[];
   AddPropertyComponent ={}
   property = new Property();
 
+
   proportyTypes: Array<string> =["House","Apartment","Duplex"]
   furnishTypes: Array<string> =["Full ","semi","unFurnish"]
+
   propertyView: IpropertyBase ={
     Id : '',
     SellRent:'',
@@ -63,6 +66,13 @@ export class AddPropertyComponent implements OnInit {
 
   ngOnInit() {
     this.createAddPropertyForm();
+    this.houseService.getAllCities().subscribe(
+      data=>{
+        this.cityList= data;
+        console.log('data', data);
+
+      }
+    )
   }
 createAddPropertyForm(){
   this.addPropertyForm = this.fb.group({

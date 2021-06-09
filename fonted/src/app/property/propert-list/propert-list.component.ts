@@ -18,8 +18,8 @@ export class PropertListComponent implements OnInit {
   city='';
   cityFilter='';
   sortByParams='';
-  sortDirection='asc';
-  
+  sortDirection='ASC';
+
 
 
   constructor( private route: ActivatedRoute, private housingServices:HousingService ) {
@@ -50,6 +50,11 @@ export class PropertListComponent implements OnInit {
         console.log(error);
       }
     );
+
+
+    this.housingServices.getAllCities().subscribe(data=>{
+      console.log("cities",data);
+    })
   }
 
   onCityFilter(){
@@ -60,11 +65,11 @@ export class PropertListComponent implements OnInit {
     this.city='';
   }
   onSort(){
-  if(this.sortDirection==='desc'){
-    this.sortDirection='asc';
+  if(this.sortDirection==='DESC'){
+    this.sortDirection='ASC';
   }
   else{
-    this.sortDirection ='desc';
+    this.sortDirection ='DESC';
   }
   }
 
